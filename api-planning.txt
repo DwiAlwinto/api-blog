@@ -1,0 +1,125 @@
+25. Merancanakan API Endpoint sebelum memulai project:
+
+                               
+                                STANDAR API :
+{root.api}/{version}/{grouping}/{endpoint} (ini bisa info ke client bisa dirubah)
+Sample :
+http://mern-api.alwindev.com/v1/auth/login
+
+
+Standar Status Response :
+200 - OK                                --> Call API Succes 
+201 - CREATED                           --> Post Success 
+400 - BAD REQUEST                       --> Error on client Side (Bisa input yang salah dll)
+401 - UNAUTHORIZED                      --> User not Autherized to the requset.
+403 - FORBIDDEN                         --> User not allowed to access.
+404 - NOT FOUND                         --> Request Endpoint Not Found.
+500 - INTERNAL SERVER ERROR             --> Error on server side.
+502 - BAD GATEWAY                       --> Invalid Response From Antoher Request.
+
+
+
+
+
+Group : Authentication
+        1. Register
+        {root.api}/{version}/auth/register
+    req: 
+    {
+        "name" : "Testing",
+        "email": "testing@email.com",
+        "password" : "123123"
+
+    },
+
+    res: 
+    {
+        message : "Register Secces",
+        "data" : 
+        {
+            "post_id" : 1,
+            "title" : "Title Blog",
+            "image": "imagefile.png",
+            "body" : "You have stories to share: small stories, big stories, meaningful stories. But not knowing the exact steps to take, you've been hesitant to start a blog",
+            "created_at : "29-04-2023",
+            "author" : {
+                "uid" : 1,
+                "name" : "Testing"
+            }
+
+        }
+    },
+
+    //status pada client:
+    err-response :
+    201 -> Blog Post Berhasil Dibuat.
+    400 -> input yang you masukan tidak valid.
+
+
+
+
+        2. Login :
+         {root.api}/{version}/auth/login
+        
+
+Group : blog
+        1. Creat Blog Post
+        2. Get Blog Post
+        3. Update Blog Post
+        4. Delete Blog Post
+
+
+
+
+next :
+1. Membuat Dummy Endpoint Response dan membuat Postman collection.
+2. Membuat Endpoint pada Posting Creat New Blog.
+3. Cara mevalidasi Request Body dan Memberikan Error Response 
+    a. Input user kepada kita(API)
+       menggunakan express validator.
+       a. https://express-validator.github.io/docs/ 
+        kita install : npm install express-validator
+
+
+
+setelah ini kita fokus ke MongoDB Atlasn:
+New Project Atlas
+Database Access -> Add New Database User -> built role(Read and write to any database) (AlwinDev password mern-blog)
+
+Setup IP = Setting IP yang kita izinkan saja. (agar lebih SAFETY)
+ADD CURRENT IP ADDRESS 
+setting :
+1. Database yang free
+2. Database access (alwindev:mern-blog)
+3. Network Access
+
+
+connect node js ke monggoDB :
+1. install mongoose (fungsi ya meng connect to mongoDB ATLAS ke NodeJS) dan (bisa membuat model database didalam di dalam monggoDB)
+    npm i mongoose
+2. connect mern-api to monggoDB ATLAS menggunakan monggose
+
+3. Setup MongoDB Model dengan Mongoose (di folder models)
+4. Menyimpan postingan Blog Baru ke Database MongoDB (cara menyimpan creat blog post ke dalam mongoDB)
+
+5.Cara Upload Image/Photo di NoeJS
+    a. Kita install multer (npm i multer)
+        noted : 
+        1. di path ya harus ati2 takut typo
+        2. Database haru terkoneksi ke IP kita.
+
+6. Cara Error Pemanggilan Image dari Server.
+    cara memperbaiki get image dari server agar bisa diakses dari manapun akses folder nya.
+7. Mengambil seluruh data Postingan Blog(GET pada NodeJS)
+
+8.Cara Update Postingan Blog(Method Method)
+
+9. Delete Posting Blog dan Delete Image Post.
+    a. Buat router ya.
+    b.
+
+10. Membuat Pagination pada response API NodeJS
+    .mockaro.com (ini untuk mengenert data dami)
+
+11. Installasi Axios(Libary untuk mempermudah  Fetch API Libary)
+    untuk proses integarsi dengan react js atau ke frontend kita
